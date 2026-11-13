@@ -175,7 +175,9 @@ class AutoHealingAnalyzer:
             context = by_case.get((case.name, case.classname))
             if context is None:
                 suggestions.append(
-                    _inconclusive(case, "Não há contexto de código ou alteração para analisar a falha.")
+                    _inconclusive(
+                        case, "Não há contexto de código ou alteração para analisar a falha."
+                    )
                 )
                 continue
             suggestions.append(self._analyze_context(context))
@@ -270,7 +272,9 @@ class AutoHealingAnalyzer:
                 evidence=[case.message, *context.rca_evidence],
                 state="inconclusive",
             )
-        return _inconclusive(case, "O diff não contém uma alteração aplicável com evidência suficiente.")
+        return _inconclusive(
+            case, "O diff não contém uma alteração aplicável com evidência suficiente."
+        )
 
 
 def apply_validation_state(

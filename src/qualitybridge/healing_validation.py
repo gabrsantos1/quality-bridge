@@ -188,7 +188,9 @@ class SuggestionValidator:
                 root,
                 temp_root,
                 symlinks=False,
-                ignore=shutil.ignore_patterns(".git", ".qualitybridge", "__pycache__", ".pytest_cache"),
+                ignore=shutil.ignore_patterns(
+                    ".git", ".qualitybridge", "__pycache__", ".pytest_cache"
+                ),
             )
             temp_file = _safe_relative_path(temp_root, suggestion.file_path)
             updated = original_text.replace(suggestion.old_text, suggestion.new_text, 1)

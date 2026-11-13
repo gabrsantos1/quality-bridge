@@ -41,9 +41,11 @@ def test_generates_concrete_selector_suggestion_and_diff():
 +BUTTON_ID = "signin-button"
 """
 
-    suggestion = AutoHealingAnalyzer().analyze(
-        result_for(case), [context(case, source, diff)]
-    ).suggestions[0]
+    suggestion = (
+        AutoHealingAnalyzer()
+        .analyze(result_for(case), [context(case, source, diff)])
+        .suggestions[0]
+    )
 
     assert suggestion.classification == "outdated_test"
     assert suggestion.problem_type == "selector_changed"
@@ -67,9 +69,11 @@ def test_generates_api_contract_suggestion():
 +def create_user(username):
 """
 
-    suggestion = AutoHealingAnalyzer().analyze(
-        result_for(case), [context(case, source, diff)]
-    ).suggestions[0]
+    suggestion = (
+        AutoHealingAnalyzer()
+        .analyze(result_for(case), [context(case, source, diff)])
+        .suggestions[0]
+    )
 
     assert suggestion.problem_type == "api_contract_changed"
     assert suggestion.old_text == "name"
@@ -89,9 +93,11 @@ def test_does_not_suggest_fix_for_possible_application_defect():
 +return value + tax
 """
 
-    suggestion = AutoHealingAnalyzer().analyze(
-        result_for(case), [context(case, source, diff)]
-    ).suggestions[0]
+    suggestion = (
+        AutoHealingAnalyzer()
+        .analyze(result_for(case), [context(case, source, diff)])
+        .suggestions[0]
+    )
 
     assert suggestion.classification == "application_defect"
     assert suggestion.state == "inconclusive"
